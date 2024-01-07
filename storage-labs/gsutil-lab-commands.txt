@@ -1,43 +1,94 @@
+# 1. Simple example in bash format.
 pwd
 ls
 
+# 2. All in one snapshot with simple description comments
+# Print current working directory
+pwd
+
+# List files and directories in the current directory
+ls
+
+# Display the current Google Cloud Platform configuration
 gcloud config list
 
+# List objects in the default Cloud Storage bucket
 gsutil ls
+
+# List objects in the specified Cloud Storage bucket
 gsutil ls gs://storage-lab-console/
+
+# Recursive listing of all objects in the specified Cloud Storage bucket
 gsutil ls gs://storage-lab-console/**
 
+# Display help information for the 'mb' (make bucket) command
 gsutil mb --help
 
+# Create a Cloud Storage bucket in the specified region
 gsutil mb -l northamerica-northeast1 gs://storage-lab-cli
+
+# List objects in the newly created Cloud Storage bucket
 gsutil ls
 
+# Get labels associated with the specified Cloud Storage bucket
 gsutil label get gs://storage-lab-console/
+
+# Save bucket labels to a JSON file
 gsutil label get gs://storage-lab-console/ >bucketlabels.json
+
+# Display the content of the saved JSON file containing bucket labels
 cat bucketlabels.json
 
-gsutil label get gs://storage-lab-cli/
-gsutil label set bucketlabels.json gs://storage-lab-cli/
+# Get labels associated with another Cloud Storage bucket
 gsutil label get gs://storage-lab-cli/
 
+# Set labels for the bucket using the saved JSON file
+gsutil label set bucketlabels.json gs://storage-lab-cli/
+
+# Verify that labels are set for the Cloud Storage bucket
+gsutil label get gs://storage-lab-cli/
+
+# Change or add an extra label for the Cloud Storage bucket
 gsutil label ch -l "extralabel:extravalue" gs://storage-lab-cli
 
+# Get versioning status for the Cloud Storage bucket
 gsutil versioning get gs://storage-lab-cli/
+
+# Enable versioning for the Cloud Storage bucket
 gsutil versioning set on gs://storage-lab-cli/
+
+# Verify that versioning is enabled for the Cloud Storage bucket
 gsutil versioning get gs://storage-lab-cli/
 
+# List objects in the versioned Cloud Storage bucket
 gsutil ls gs://storage-lab-cli/
+
+# Copy a file to the Cloud Storage bucket
 gsutil cp README-cloudshell.txt gs://storage-lab-cli/
+
+# List objects in the Cloud Storage bucket after copying a file
 gsutil ls gs://storage-lab-cli/
 
-gsutil ls gs://storage-lab-cli/
+# List all objects, including versions, in the Cloud Storage bucket
 gsutil ls -a gs://storage-lab-cli/
+
+# Remove a specific object from the Cloud Storage bucket
 gsutil rm gs://storage-lab-cli/README-cloudshell.txt
+
+# List objects in the Cloud Storage bucket after removing a file
 gsutil ls gs://storage-lab-cli/
+
+# List all objects, including versions, in the Cloud Storage bucket after removal
 gsutil ls -a gs://storage-lab-cli/
 
+# Copy all objects from one Cloud Storage bucket to another
 gsutil cp gs://storage-lab-console/** gs://storage-lab-cli/
+
+# List objects in the destination Cloud Storage bucket after copying
 gsutil ls gs://storage-lab-cli/
+
+# List all objects, including versions, in the destination Cloud Storage bucket
 gsutil ls -a gs://storage-lab-cli/
 
+# Change the access control list to grant read access to all users for a specific object
 gsutil acl ch -u AllUsers:R gs://storage-lab-cli/Selfie.jpg
