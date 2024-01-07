@@ -1,19 +1,32 @@
+# Retrieve current project ID
 gcloud config get-value project
 
+# List all Compute Engine instances
 gcloud compute instances list
 
+# List all available GCP services
 gcloud services list
+
+# Display help information for services list command
 gcloud services list -h
+
+# List enabled GCP services
 gcloud services list --enabled
+
+# List available GCP services
 gcloud services list --available
 
+# Filter available services for "compute"
 gcloud services list --available | grep compute
+
+# Display help information for services command
 gcloud services -h
 
-gcloud compute instances list
-
-gcloud services list
-
+# Create a new Compute Engine instance named "myvm"
 gcloud compute instances create myvm
+
+# Delete the Compute Engine instance named "myvm"
 gcloud compute instances delete myvm
+
+# List all Compute Engine instances again
 gcloud compute instances list
